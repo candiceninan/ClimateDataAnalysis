@@ -134,7 +134,6 @@ void analyze_file(FILE *file, struct climate_info **states, int num_states, int 
     //loop through array structs to find state we wat-if doesnt exist, malloc
     //use ptr to struct to update stats
     while (fgets(line, line_sz, file) != NULL) {
-        //int len = strlen(line);
         last_token  = strtok(line,"\t");
         int token_id = 0;
         char temp_time[30];
