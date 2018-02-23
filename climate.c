@@ -172,7 +172,6 @@ void analyze_file(FILE *file, struct climate_info **states, int num_states, int 
                         break;
                     }
                 case 2:
-                    // Geohash string
                     break;
                 case 3:
                     // Humidity
