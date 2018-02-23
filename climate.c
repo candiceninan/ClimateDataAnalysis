@@ -81,6 +81,7 @@ struct climate_info {
 /* Function prototypes */
 void analyze_file(FILE *file, struct climate_info *states[], int num_states, int *state_index);
 void print_report(struct climate_info *states[], int num_states);
+void initialize_state(struct climate_info *states[],int state_index);
 
 int main(int argc, char *argv[]) {
 
@@ -155,15 +156,7 @@ void analyze_file(FILE *file, struct climate_info **states, int num_states, int 
                         }
                         if(i == num_states){
                             *(state_index) = *(state_index)+1;
-                            states[*(state_index)] = malloc(sizeof(struct climate_info));
-                            states[*(state_index)]->sum_humidity = 0;
-                            states[*(state_index)]->sum_temperature = 0;
-                            states[*(state_index)]->records_with_snow_cover = 0;
-                            states[*(state_index)]->sum_cloud_cover = 0;
-                            states[*(state_index)]->lightning_strikes = 0;
-                            states[*(state_index)]->num_records = 0;
-                            states[*(state_index)]->max_temp = -1;
-                            states[*(state_index)]->min_temp = 4000;
+                            initialize_state(states,*(state_index));
                         }
                         states[*(state_index)]->num_records++;
                         strcpy(states[*(state_index)]->code,last_token);
@@ -292,4 +285,6 @@ void initialize_state(struct climate_info **states, int index){
     states[index]->sum_cloud_cover = 0;
     states[index]->lightning_strikes = 0;
     states[index]->num_records = 0;
+    states[index]->max_temp = -1;
+    states[index]->min_temp = 4000;
 }
