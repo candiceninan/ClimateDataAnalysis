@@ -199,7 +199,6 @@ void analyze_file(FILE *file, struct climate_info **states, int num_states, int 
                 case 7:
                     //pressure
                     {
-                        // Not needed
                         break;
                     }
                 case 8:
